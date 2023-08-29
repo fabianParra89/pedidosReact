@@ -1,16 +1,51 @@
+import { useEffect, useState } from 'react';
+import { useParams, Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import data from "../../data/data.json";
+import { Container } from 'react-bootstrap';
+
+
 
 function ItemListContainer(props) {
+
+    const { categoryId } = useParams();
+    const [products, setProducts] = useState([])
+
+    //console.log(categoryId)
+
+    useEffect(() => {
+        if (categoryId) {
+            const productsFilteredByCategory = data.filter(
+                product => product.tipoProducto === categoryId
+            )
+            setProducts(productsFilteredByCategory)
+
+            console.log(products)
+        } else {
+            setProducts(data)
+        }
+    }, [categoryId])
     return (
-        <Card style={{textAlign: 'center'}}>
-            <Card.Header as="h5" >{props.title}</Card.Header>
-            <Card.Body>
-                <Card.Title>{props.subTitle}</Card.Title>
-                <Card.Text>
-                    {props.greetings}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <Container className='container-productos'>
+            {
+                products.map(product => (
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={product.src} />
+                        <Card.Body>
+                            <Card.Title>{product.producto}</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the
+                                bulk of the card's content.
+                            </Card.Text>
+                            <Link to={`/item/${product.id}`}>
+                                <Button variant="primary">Detalle</Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                ))
+            }
+        </Container>
     )
 }
 
