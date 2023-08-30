@@ -39,6 +39,7 @@ function NavBar() {
       </Navbar>
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
+        <Route path="/pedidosReact" element={<ItemListContainer />} />
         <Route path="/contact" element={<></>} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
         <Route path="/item/:Id" element={<ItemDetailContainer />} />
