@@ -8,7 +8,7 @@ import ItemListContainer from '../itemListContainer/itemListContainer'
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import Error404 from "../Error404";
 import data from "../../data/data.json";
-import Detalle  from "../detalle";
+import ItemDetailContainer  from "../ItemDetailContainer";
 
 function NavBar() {
   const categories = data.map(producto => producto.tipoProducto);
@@ -17,7 +17,7 @@ function NavBar() {
     <BrowserRouter>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand to="/"><img src={logo} alt='logo cabrera' width={250} /></Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/"><img src={logo} alt='logo cabrera' width={250} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -41,7 +41,7 @@ function NavBar() {
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/contact" element={<></>} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/item/:Id" element={<Detalle />} />
+        <Route path="/item/:Id" element={<ItemDetailContainer />} />
         <Route path="/eventos" element={<></>} />
         <Route path="*" element={<Error404 />} />
       </Routes>

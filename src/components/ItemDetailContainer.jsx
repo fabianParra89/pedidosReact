@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Error404 from './Error404'
+import { ItemCount } from "./ItemCount";
+import { Container } from 'react-bootstrap';
 
 function Detalle() {
     const { Id } = useParams();
@@ -18,7 +20,7 @@ function Detalle() {
         }
     }, [Id])
     return (
-        <>
+        <Container className='container-productos'>
             {
                 product ?
                     <Card style={{ width: '18rem' }}>
@@ -29,17 +31,15 @@ function Detalle() {
                                 Some quick example text to build on the card title and make up the
                                 bulk of the card's content.
                             </Card.Text>
+                            <ItemCount />
                             <Link to={"/"}>
                                 <Button variant="primary">Volver</Button>
                             </Link>
                         </Card.Body>
-                    </Card> : <Error404/>
-            }</>
-
-
+                    </Card> : <Error404 />
+            }
+        </Container>
     )
-
 }
-
 export default Detalle;
 
