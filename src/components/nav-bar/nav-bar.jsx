@@ -4,17 +4,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../assets/img/logo.png'
 import CartWidget from '../cart/cartWidget'
-import ItemListContainer from '../itemListContainer/itemListContainer'
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import Error404 from "../Error404";
-import data from "../../data/data.json";
-import ItemDetailContainer  from "../ItemDetailContainer";
+import { NavLink} from "react-router-dom";
+import { useProductsList } from '../../hooks/useItemList';
+
 
 function NavBar() {
-  const categories = data.map(producto => producto.tipoProducto);
+  const { products } = useProductsList()
+  const categories = products.map(producto => producto.categoryId);
   const categoriesMenu = [... new Set(categories.sort())];
   return (
-    <BrowserRouter>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand as={NavLink} to="/"><img src={logo} alt='logo cabrera' width={250} /></Navbar.Brand>
@@ -37,16 +35,6 @@ function NavBar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/pedidosReact" element={<ItemListContainer />} />
-        <Route path="/contact" element={<></>} />
-        <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/item/:Id" element={<ItemDetailContainer />} />
-        <Route path="/eventos" element={<></>} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-    </BrowserRouter>
   );
 }
 
