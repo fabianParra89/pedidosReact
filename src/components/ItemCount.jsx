@@ -3,10 +3,10 @@ import { useState } from "react";
 
 export const ItemCount = ({onAdd, stock}) => {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     
     const handleDecreseCount = () => {
-        if (count > 0) {
+        if (count > 1) {
             setCount((prev) => prev - 1);
         }
     }
