@@ -10,9 +10,9 @@ import { CartContext } from "../contexts/CartContext";
 export const ItemDetail = ({ product }) => {
     const { addItem } = useContext(CartContext)
     const onAdd = (count) => addItem(product, count);
+    console.log(product.title)
     return (
-
-        product ?
+        product.title ?
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={product.imageId} />
                 <Card.Body>
@@ -26,9 +26,10 @@ export const ItemDetail = ({ product }) => {
                     <Card.Text>{`$${product.price}`}</Card.Text>
                     <ItemCount onAdd={onAdd} stock={product.stock} />
                     <Link to={"/"}>
-                        <Button variant="primary">Volver</Button>
+                        <Button variant="primary">Ir al menú</Button>
                     </Link>
                 </Card.Body>
-            </Card> : <Error404 />
+            </Card> : 
+            <Error404 />
     );
 };

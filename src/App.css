@@ -49,7 +49,7 @@
   align-items: center;
   color: black;
   padding: 1rem;
-  
+
 }
 
 .itemCount-containerButton {
@@ -144,30 +144,63 @@
 
 }
 
-.btn{
+.btn {
   background-color: #282c34 !important;
   border: none !important;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #EB7C13 !important;
-  
+
 }
 
-.container-CartWidget{
+.container-CartWidget {
   display: flex;
-    flex-direction: row;
-    width: 60px;
-    justify-content: space-between;
+  flex-direction: row;
+  width: 60px;
+  justify-content: space-between;
 }
 
-.quantity-CartWidget{
+.quantity-CartWidget {
   border-radius: 5px;
-    background-color: white;
-    padding-left: 7px;
-    padding-right: 7px;
-    color: #282c34;
-    font-weight: bold;
+  background-color: white;
+  padding-left: 7px;
+  padding-right: 7px;
+  color: #282c34;
+  font-weight: bold;
+}
+
+.cart-Empty {
+  font-size: 36px;
+  display: flex;
+  margin-top: 100px;
+  color: #282c34;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-cart {
+  width: 70px;
+}
+
+.form-buyer {
+  width: 500px;
+  margin: auto;
+}
+
+.title-form-buyer {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.button-buy {
+
+  margin: auto;
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 

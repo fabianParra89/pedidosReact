@@ -21,8 +21,7 @@ export const CartProvider = ({ children }) => {
             setItems(actualizaItems)
         }
     }
-
-
+    
 const totalWidget = items.reduce((acc, val) => acc + val.quantity, 0)
 
 const removeItem = id => {
